@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="mrp_bom_form_view" model="ir.ui.view">
+            <field name="name">mrp_bom_form_view</field>
+            <field name="model">mrp.bom</field>
+            <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='bom_line_ids']/tree/field[@name='product_qty']" position="before">
+                    <field name="calcul_type"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="mrp_production_form_view" model="ir.ui.view">
+            <field name="name">mrp_production_form_view</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='product_id']" position="after">
+                    <field name="hauteur"/>
+                    <field name="largeur"/>
+                </xpath>
+
+            <xpath expr="//field[@name='move_raw_ids']/tree/field[@name='product_uom_qty']" position="before">
+                    <field name="calcul_type"/>
+                </xpath>
+</field>
+        </record>
+    </data>
+</odoo>
